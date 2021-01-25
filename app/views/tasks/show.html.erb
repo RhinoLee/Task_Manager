@@ -1,0 +1,7 @@
+<h2 class="title">任務名稱：<%= @task.title %></h2>
+<p class="content">任務內容：<%= @task.content %></p>
+
+<%= link_to '編輯任務', edit_task_path(@task) %>
+<%= link_to '刪除任務', task_path(@task), 
+                       method: 'DELETE', 
+                       data: { confirm: '確定要刪除任務？' }  %>
