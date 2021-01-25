@@ -1,0 +1,6 @@
+<h1>Task Lists</h1>
+
+<%= form_with model: @task_list do |form| %>
+  <% form.label :title, '列表標題' %>
+  <% form.text_field :title %>
+<% end %>
