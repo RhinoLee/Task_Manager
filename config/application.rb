@@ -17,8 +17,8 @@ module TaskManager
       g.test_framework false 
     end
 
-   
-    # config.time_zone = "Central Time (US & Canada)"
+    config.i18n.default_locale = "zh-TW"
+    config.time_zone = "Taipei"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

@@ -3,7 +3,7 @@
 <% if @task.errors.any? %>
   <ul>
     <% @task.errors.each do |error| %>
-      <li><%= error.message %></li>
+      <li><%= error.full_message %></li>
     <% end %>
   </ul>
 <% end %>
