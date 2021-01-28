@@ -1,0 +1,14 @@
+<h1>任務列表</h1>
+
+<%= link_to '新增任務', new_task_path %>
+
+
+
+<% @tasks.each do |task| %>
+  <div class="task">
+    <h3 class="title">任務標題：<%= task.title %></h3>
+    <p>任務內容：<%= task.content %></p>
+  </div>
+
+  <%= link_to '檢視任務', task_path(task) %>
+<% end %>

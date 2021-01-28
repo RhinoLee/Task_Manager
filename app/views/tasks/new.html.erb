@@ -1,0 +1,12 @@
+<h1>新增列表</h1>
+
+<% if @task.errors.any? %>
+  <ul>
+    <% @task.errors.each do |error| %>
+      <li><%= error.message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form', task: @task %>
+
