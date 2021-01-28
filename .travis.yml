@@ -1,8 +1,7 @@
 language: ruby
-rvm:
-- 3.0.0
-install: bundle install
-services:
-  - postgresql
+rvm: 3.0.0
 script:
-  - bundle exec rspec
+ — bundle install
+ — bundle exec rake db:create
+ — bundle exec rake db:migrate
+ — bundle exec rspec
