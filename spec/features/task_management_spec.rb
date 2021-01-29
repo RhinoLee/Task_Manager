@@ -11,4 +11,16 @@ RSpec.feature "Task management", :type => :feature do
 
     expect(page).to have_text("任務新增成功！")
   end
+
+  scenario "任務列表以建立時間排序" do
+
+    task_old = Task.create(title: "old task", content: "old content")
+    task_new = Task.create(title: "new task", content: "new content")
+
+    visit "/"
+
+    page.body.index(task_new.title).should < page.body.index(task_old.title)
+
+  end
+
 end
