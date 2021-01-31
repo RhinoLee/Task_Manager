@@ -1,2 +1,2 @@
-web: bin/rails server -p 3000
+web: bundle exec puma -p ${PORT:-3000}
 webpacker: bin/webpack-dev-server
