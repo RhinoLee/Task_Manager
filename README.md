@@ -37,4 +37,6 @@ table: task
   * Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch
   1. Procfile => web: bundle exec puma -p ${PORT:-3000}
 
+  * 新增 http_base 環境變數
+
   
