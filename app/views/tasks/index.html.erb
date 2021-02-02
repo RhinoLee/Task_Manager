@@ -1,13 +1,22 @@
 <h1>任務列表</h1>
 
 <%= link_to '新增任務', new_task_path %>
-
-
+<ul>
+  <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
+  <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
+  <!-- <li><%= link_to '按結束時間排序', api_v1_sort_endtime_path, :remote => true, method: :post, id: 'end_time_btn' %></li>
+  <li><%= link_to '按新增時間排序', api_v1_sort_create_time_path, :remote => true, method: :post, id: 'create_time_btn' %></li> -->
+</ul>
 
 <% @tasks.each do |task| %>
-  <div class="task">
+  <div class="task-table">
     <h3 class="title">任務標題：<%= task.title %></h3>
-    <p>任務內容：<%= task.content %></p>
+    <ul>
+      <li>任務內容：<%= task.content %></li>
+      <% if task.end_time %>
+      <li>結束時間：<%= task.end_time.strftime("%Y/%m/%d") %></li>
+      <% end %>
+    </ul>
   </div>
 
   <%= link_to '檢視任務', task_path(task) %>

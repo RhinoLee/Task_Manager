@@ -6,5 +6,9 @@
   <%= form.label :content, '任務內容' %><br>
   <%= form.text_area :content, size: "30x10" %>
   <br>
+  <%= form.label :end_time, '結束時間' %><br>
+  <%= form.date_field :end_time, size: "30x10" %>
+  <br>
+  <br>
   <%= form.submit form_action(task) %>
 <% end %>
