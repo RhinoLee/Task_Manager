@@ -10,5 +10,17 @@
   <%= form.date_field :end_time, size: "30x10" %>
   <br>
   <br>
+
+  <%= form.label :status_待處理, "待處理" %>
+  <%= form.radio_button :status, "待處理", checked: true %>
+
+  <%= form.label :status_處理中, "處理中" %>
+  <%= form.radio_button :status, "處理中" %>
+
+  <%= form.label :status_完成, "完成" %>
+  <%= form.radio_button :status, "完成" %>
+  <br>
+  <br>
+
   <%= form.submit form_action(task) %>
 <% end %>
