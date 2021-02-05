@@ -1,0 +1,18 @@
+
+<% @tasks.each do |task| %>
+<div class="task">
+  <h3 class="title">任務標題：<%= task.title %></h3>
+  <h4>
+    <span>狀態：</span>
+    <span><%= task.status %></span>
+  </h4>
+  <ul>
+    <li>任務內容：<%= task.content %></li>
+    <% if task.end_time %>
+    <li>結束時間：<%= task.end_time.strftime("%Y/%m/%d") %></li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to '檢視任務', task_path(task) %>
+<% end %>

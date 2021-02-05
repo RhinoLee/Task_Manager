@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasks  
 
-  namespace :api do 
-    namespace :v1 do 
-      post 'sort_endtime', to: 'utils#sort_end_time'
-      post 'sort_create_time', to: 'utils#sort_create_time'
+  resources :searches, only: [:index] do 
+    collection do 
+      get :search
     end
   end
 

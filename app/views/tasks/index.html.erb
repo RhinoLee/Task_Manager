@@ -1,27 +1,18 @@
 <h1>任務列表</h1>
+<%= @task_title %>
 
 <%= link_to '新增任務', new_task_path %>
 <ul>
   <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
   <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
-  <!-- <li><%= link_to '按結束時間排序', api_v1_sort_endtime_path, :remote => true, method: :post, id: 'end_time_btn' %></li>
-  <li><%= link_to '按新增時間排序', api_v1_sort_create_time_path, :remote => true, method: :post, id: 'create_time_btn' %></li> -->
 </ul>
 
-<% @tasks.each do |task| %>
-  <div class="task-table">
-    <h3 class="title">任務標題：<%= task.title %></h3>
-    <h4>
-      <span>狀態：</span>
-      <span><%= task.status %></span>
-    </h4>
-    <ul>
-      <li>任務內容：<%= task.content %></li>
-      <% if task.end_time %>
-      <li>結束時間：<%= task.end_time.strftime("%Y/%m/%d") %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <%= link_to '檢視任務', task_path(task) %>
+<%= form_with(url: search_searches_path, method: :get, class: 'search-form') do |f| %>
+  <%= f.text_field :keyword, class: 'search-input', placeholder: '搜尋任務名稱' %>
+  <%= f.submit "Search", class: 'submit-btn', style: "display:none" %>
 <% end %>
+
+<div class="tasks-table">
+  <%= render '/tasks/task', tasks: @tasks if @tasks %>
+</div>
+

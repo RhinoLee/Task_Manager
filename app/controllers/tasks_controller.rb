@@ -2,14 +2,9 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index 
-    case params[:sort]
-    when "end_time"
-      @tasks = Task.order(end_time: :asc)
-    when "create_time"
-      @tasks = Task.order(created_at: :desc)
-    when nil
-      @tasks = Task.order(created_at: :desc)
-    end
+    
+    sort_task(sort: params[:sort])
+    
   end
 
   def new 
@@ -50,10 +45,23 @@ class TasksController < ApplicationController
 
   private 
   def task_params 
-    params.require(:task).permit(:title, :content, :end_time, :status)
+    params.require(:task).permit(:title, :content, :end_time, :status, :search)
   end
 
   def find_task 
     @task = Task.find(params[:id])
   end
+
+  def sort_task(sort: nil)
+    case sort
+    when "end_time"
+      @tasks = Task.order(end_time: :asc)
+    when "create_time"
+      @tasks = Task.order(created_at: :desc)
+    when nil
+      @tasks = Task.order(created_at: :desc)
+    end
+  end
+
+
 end
