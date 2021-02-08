@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
   def index 
     
-    sort_task(sort: params[:sort])
+    @tasks = Task.order(created_at: :desc)
+    sort_task(sort: params[:sort]) if params[:sort]
     
   end
 
@@ -56,9 +57,7 @@ class TasksController < ApplicationController
     case sort
     when "end_time"
       @tasks = Task.order(end_time: :asc)
-    when "create_time"
-      @tasks = Task.order(created_at: :desc)
-    when nil
+    when nil || "create_time"
       @tasks = Task.order(created_at: :desc)
     end
   end
