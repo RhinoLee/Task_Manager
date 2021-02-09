@@ -13,8 +13,8 @@ RSpec.feature "Task management", :type => :feature do
   end
 
   scenario "任務列表以建立時間排序" do
-    task_old = Task.create(title: "old task", content: "old content")
-    task_new = Task.create(title: "new task", content: "new content")
+    task_old = Task.create(title: "old task", content: "old content", status: "待處理")
+    task_new = Task.create(title: "new task", content: "new content", status: "待處理")
 
     visit "/"
 
@@ -24,8 +24,8 @@ RSpec.feature "Task management", :type => :feature do
   scenario "任務列表以結束時間排序" do
     visit "/"
 
-    task_old = Task.create(title: "old task", content: "old content", end_time: "2021/02/17")
-    task_new = Task.create(title: "new task", content: "new content", end_time: "2021/04/20")
+    task_old = Task.create(title: "old task", content: "old content", end_time: "2021/02/17", status: "待處理")
+    task_new = Task.create(title: "new task", content: "new content", end_time: "2021/04/20", status: "待處理")
 
     find('#end_time_btn').click
 

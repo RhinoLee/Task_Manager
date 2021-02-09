@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Task, :type => :model do
   let(:task) { Task.new(title: 'Task name', 
-                        content: 'Task content') }
+                        content: 'Task content',
+                        status: "待處理" )}
 
   it "新增任務且通過每個驗證" do
     expect(task).to be_valid
