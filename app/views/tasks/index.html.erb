@@ -1,27 +1,32 @@
+
 <h1>任務列表</h1>
 <%= @task_title %>
 
-<%= link_to '新增任務', new_task_path %>
-<ul>
-  <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
-  <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
-</ul>
+<div class="index-table">
+  <%= link_to '新增任務', new_task_path %>
+  <ul>
+    <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
+    <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
+  </ul>
 
-<%= form_with(url: search_searches_path, method: :get, class: 'search-form') do |f| %>
-  <%= f.text_field :keyword, class: 'search-title', placeholder: '搜尋任務名稱' %>
+  <%= form_with(url: search_searches_path, method: :get, class: 'search-form') do |f| %>
+    <%= f.text_field :keyword, class: 'search-title', placeholder: '搜尋任務名稱' %>
 
+    <%= f.radio_button :status, '待處理' %> 
+    <%= label :status, '待處理' %>
+    <%= f.radio_button :status, '處理中' %> 
+    <%= label :status, '處理中' %>
+    <%= f.radio_button :status, '完成' %>
+    <%= label :status, '完成' %>
 
-  <%= f.radio_button :status, '待處理' %> 
-  <%= label :status, '待處理' %>
-  <%= f.radio_button :status, '處理中' %> 
-  <%= label :status, '處理中' %>
-  <%= f.radio_button :status, '完成' %>
-  <%= label :status, '完成' %>
+    <%= f.submit "Search", class: 'submit-btn', style: "display:none" %>
+  <% end %>
+</div>
 
-  <%= f.submit "Search", class: 'submit-btn', style: "display:none" %>
-<% end %>
 
 <div class="tasks-table">
   <%= render '/tasks/task', tasks: @tasks if @tasks %>
 </div>
+
+
 

@@ -1,10 +1,10 @@
 import Rails from "@rails/ujs"
 document.addEventListener('turbolinks:load', function(){
 
-  const searchTitle = document.querySelector('.search-title')
-  const searchStatus = document.querySelectorAll('input[type="radio"]')
-
-  if(searchTitle || searchStatus) {
+  const searchTitle = document.querySelector('.index-table .search-title')
+  const searchStatus = document.querySelectorAll('.index-table input[type="radio"]')
+  
+  if(searchTitle || searchStatus.length > 0) {
 
     let getData = function(e){
       // e.preventDefault();
@@ -39,7 +39,6 @@ document.addEventListener('turbolinks:load', function(){
       radio.addEventListener('click', getData)
     })
     
-    // searchStatus.addEventListener("keyup", getData)
   }
   
 
