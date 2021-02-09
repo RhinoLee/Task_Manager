@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index 
-    
-    @tasks = Task.order(created_at: :desc)
+
+    @tasks = Task.sort_by_createtime
     sort_task(sort: params[:sort]) if params[:sort]
     
   end
@@ -54,11 +54,12 @@ class TasksController < ApplicationController
   end
 
   def sort_task(sort: nil)
+    
     case sort
     when "end_time"
-      @tasks = Task.order(end_time: :asc)
-    when nil || "create_time"
-      @tasks = Task.order(created_at: :desc)
+      @tasks = Task.sort_by_endtime
+    when "create_time"
+      @tasks = Task.sort_by_createtime
     end
   end
 
