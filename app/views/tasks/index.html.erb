@@ -9,9 +9,11 @@
     <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
   </ul>
 
-  <%= form_with(url: search_searches_path, method: :get, class: 'search-form') do |f| %>
+  <%= form_with(url: tasks_path, method: :get, class: 'search-form') do |f| %>
     <%= f.text_field :keyword, class: 'search-title', placeholder: '搜尋任務名稱' %>
-
+    
+    <%= f.radio_button :status, '全部' %> 
+    <%= label :status, '全部' %>
     <%= f.radio_button :status, '待處理' %> 
     <%= label :status, '待處理' %>
     <%= f.radio_button :status, '處理中' %> 

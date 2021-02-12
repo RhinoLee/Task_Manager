@@ -14,7 +14,7 @@ document.addEventListener('turbolinks:load', function(){
 
       searchStatus.forEach( radio => {
         if (radio.checked) {
-          status = radio.value
+          status = radio.value === '全部' ? '' : radio.value
         }
       } )
 
