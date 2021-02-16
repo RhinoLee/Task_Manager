@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_030214) do
+ActiveRecord::Schema.define(version: 2021_02_16_054812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_030214) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "level"
-    t.string "status"
+    t.string "status", default: "待處理"
     t.string "category"
     t.integer "position"
   end
