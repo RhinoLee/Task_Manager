@@ -7,10 +7,9 @@ class Task < ApplicationRecord
   scope :sort_by_endtime, -> { order(end_time: :asc) }
   scope :sort_by_createtime, -> { order(created_at: :desc) }
 
-  def self.search(search)
-
-    if search
-      find(:all, :conditions => ["#{search} LIKE ?", "%#{search}%"])
+  def self.search(title = '', status = '')
+    if title || status
+      Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%")
     else
       Task.all
     end
@@ -18,3 +17,6 @@ class Task < ApplicationRecord
   end
 
 end
+
+
+

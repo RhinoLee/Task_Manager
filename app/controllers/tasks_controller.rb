@@ -2,8 +2,10 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @tasks = Task.search(params[:search])
+    
+    @tasks = Task.search(params[:title], params[:status])
     sort_task(sort: params[:sort]) if params[:sort]
+
   end
 
   def new 
@@ -40,6 +42,8 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to :root, notice: "任務已刪除"
   end
+
+  
 
 
   private 

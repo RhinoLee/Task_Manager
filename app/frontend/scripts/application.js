@@ -21,7 +21,7 @@ document.addEventListener('turbolinks:load', function(){
       clearTimeout(searchTime)
       searchTime = setTimeout(function(){
         Rails.ajax({
-          url: `/searches/search/?title=${title}&status=${status}`,
+          url: `/tasks/?title=${title}&status=${status}`,
           type: 'GET',
           dataType: 'json', 
           // success: (res) => {
