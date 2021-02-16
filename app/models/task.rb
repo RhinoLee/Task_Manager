@@ -11,7 +11,7 @@ class Task < ApplicationRecord
     if title || status
       Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%")
     else
-      Task.all
+      Task.order(created_at: :desc)
     end
 
   end

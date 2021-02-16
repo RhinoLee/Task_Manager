@@ -56,12 +56,11 @@ class TasksController < ApplicationController
   end
 
   def sort_task(sort: nil)
-    
     case sort
     when "end_time"
-      @tasks = @tasks.sort_by_endtime
+      @tasks = Task.sort_by_endtime
     when "create_time" || nil
-      @tasks = @tasks.sort_by_createtime
+      @tasks = Task.sort_by_createtime
     end
   end
 
