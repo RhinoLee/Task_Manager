@@ -30,6 +30,15 @@ RSpec.describe Task, :type => :model do
       expect(Task.search('hel')).to contain_exactly(task_2)
 
     end
+
+    it "使用任務狀態查詢" do 
+
+      task_1 = Task.create(title: 'test', content: 'test123', status: '完成') 
+      task_2 = Task.create(title: 'test', content: 'test123', status: '待處理') 
+      expect(Task.search('test', '完成')).to contain_exactly(task_1)
+      expect(Task.search('test', '待處理')).to contain_exactly(task_2)
+
+    end
   end
 
 end
