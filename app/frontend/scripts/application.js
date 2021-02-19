@@ -1,6 +1,7 @@
 import Rails from "@rails/ujs"
 document.addEventListener('turbolinks:load', function(){
 
+  const searchForm = document.querySelector('.index-table .search-form')
   const searchTitle = document.querySelector('.index-table .search-title')
   const searchStatus = document.querySelectorAll('.index-table input[type="radio"]')
   
@@ -34,6 +35,10 @@ document.addEventListener('turbolinks:load', function(){
       }, 500)
     }
     searchTitle.addEventListener("keyup", getData)
+    searchForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      getData()
+    })
 
     searchStatus.forEach( radio => {
       radio.addEventListener('click', getData)
