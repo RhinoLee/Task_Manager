@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index 
     
-    @tasks = Task.search(params[:title], params[:status])
+    @tasks = Task.search(params[:title], params[:status]).page params[:tasks_page]
     sort_task(sort: params[:sort]) if params[:sort]
 
   end
@@ -58,13 +58,13 @@ class TasksController < ApplicationController
   def sort_task(sort: nil)
     case sort
     when "end_time"
-      @tasks = Task.sort_by_endtime
+      @tasks = Task.sort_by_endtime.page params[:page]
     when "create_time" || nil
-      @tasks = Task.sort_by_createtime
+      @tasks = Task.sort_by_createtime.page params[:page]
     when "level_desc" 
-      @tasks = Task.sort_by_level_desc
+      @tasks = Task.sort_by_level_desc.page params[:page]
     when "level_asc" 
-      @tasks = Task.sort_by_level_asc
+      @tasks = Task.sort_by_level_asc.page params[:page]
     end
   end
 

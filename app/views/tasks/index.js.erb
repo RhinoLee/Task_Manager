@@ -1,1 +1,2 @@
 document.querySelector(".tasks-table").innerHTML = '<%= j (render "/tasks/task", tasks: @tasks) %>'
+document.querySelector('nav.pagination').innerHTML = '<%= j (paginate(@tasks).to_s) %>';
