@@ -61,6 +61,10 @@ class TasksController < ApplicationController
       @tasks = Task.sort_by_endtime
     when "create_time" || nil
       @tasks = Task.sort_by_createtime
+    when "level_desc" 
+      @tasks = Task.sort_by_level_desc
+    when "level_asc" 
+      @tasks = Task.sort_by_level_asc
     end
   end
 
