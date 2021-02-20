@@ -8,10 +8,10 @@ class Task < ApplicationRecord
   scope :sort_by_createtime, -> { order(created_at: :desc) }
 
   def self.search(title = '', status = '')
-    if title || status
-      Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%")
+    if title != '' || status != ''
+      Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%").sort_by_createtime
     else
-      Task.order(created_at: :desc)
+      Task.sort_by_createtime
     end
 
   end
