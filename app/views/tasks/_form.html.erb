@@ -11,14 +11,28 @@
   <br>
   <br>
 
-  <%= form.label :status_待處理, "待處理" %>
+  <h3 class="title">任務狀態</h3>
   <%= form.radio_button :status, "待處理", checked: true %>
+  <%= form.label :status_待處理, "待處理" %>
 
-  <%= form.label :status_處理中, "處理中" %>
   <%= form.radio_button :status, "處理中" %>
+  <%= form.label :status_處理中, "處理中" %>
 
-  <%= form.label :status_完成, "完成" %>
   <%= form.radio_button :status, "完成" %>
+  <%= form.label :status_完成, "完成" %>
+  <br>
+  <br>
+
+  <h3 class="title">優先順序</h3>
+  <%= form.radio_button :level, "0", checked: true %>
+  <%= form.label :level_0, "低" %>
+
+  <%= form.radio_button :level, "1" %>
+  <%= form.label :level_1, "中" %>
+
+  <%= form.radio_button :level, "2" %>
+  <%= form.label :level_2, "高" %>
+
   <br>
   <br>
 
