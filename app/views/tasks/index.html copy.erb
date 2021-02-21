@@ -12,14 +12,14 @@
   
       <h3>按時間排序</h3>
       <ul>
-        <li><a class="sort-btn end_time" href="#" data-action="end_time">按結束時間排序</a></li>
-        <li><a class="sort-btn" href="#" data-action="create_time">按新增時間排序</a></li>
+        <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
+        <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
       </ul>
     
       <h3>按優先順序排序</h3>
       <ul>
-        <li><a class="sort-btn" href="#" data-action="level_desc">從高到低</a></li>
-        <li><a class="sort-btn" href="#" data-action="level_asc">從低到高</a></li>
+        <li><%= link_to '從高到低', tasks_path(sort: 'level_desc'), id: 'level_desc_btn' %></li>
+        <li><%= link_to '從低到高', tasks_path(sort: 'level_asc'), id: 'level_asc_btn' %></li>
       </ul>
       
       <h3>搜尋任務</h3>

@@ -2,10 +2,7 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index 
-    
-    @tasks = Task.search(params[:title], params[:status]).page params[:tasks_page]
-    sort_task(sort: params[:sort]) if params[:sort]
-
+    @tasks = Task.sort_by_createtime
   end
 
   def new 
@@ -43,7 +40,14 @@ class TasksController < ApplicationController
     redirect_to :root, notice: "任務已刪除"
   end
 
-  
+  def filter 
+
+    @tasks = Task.search(params[:title], params[:status])
+    sort_task(params[:sort], @tasks) if params[:sort]
+
+    render json: {tasks: @tasks }
+
+  end
 
 
   private 
@@ -55,16 +59,16 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  def sort_task(sort: nil)
+  def sort_task(sort = nil, tasks = nil)
     case sort
     when "end_time"
-      @tasks = Task.sort_by_endtime.page params[:page]
-    when "create_time" || nil
-      @tasks = Task.sort_by_createtime.page params[:page]
+      @tasks = tasks.sort_by_endtime
+    when "create_time"
+      @tasks = tasks.sort_by_createtime
     when "level_desc" 
-      @tasks = Task.sort_by_level_desc.page params[:page]
+      @tasks = tasks.sort_by_level_desc
     when "level_asc" 
-      @tasks = Task.sort_by_level_asc.page params[:page]
+      @tasks = tasks.sort_by_level_asc
     end
   end
 

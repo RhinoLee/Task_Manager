@@ -1,9 +1,9 @@
 
 <% @tasks.each do |task| %>
 <div class="col-3">
-  <div class="task">
+  <div class="task" data-title="<%= task.title %>" data-title="<%= task.title %>">
     <%= link_to task_path(task) do %>
-      <h3 class="title">任務標題：<%= task.title %></h3>
+      <h3 class="title"><%= task.title %></h3>
       <h4>
         <span>狀態：</span>
         <span><%= task.status %></span>

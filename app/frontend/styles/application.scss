@@ -33,12 +33,16 @@ header {
 .row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  // justify-content: center;
   margin-left: -30px;
 }
 
 [class ^='col-'] {
   padding: 0 15px;
+}
+
+.col-3 {
+  width: 33.333333%;
 }
 
 .task-wrapper {
@@ -77,12 +81,15 @@ header {
 .task {
   border-radius: 15px;
   margin-bottom: 20px;
-  padding: 20px;
   background: $color-yellow;
   color: #fff;
   line-height: 1.6;
   font-size: 20px;
   letter-spacing: 1px;
+  a {
+    display: block;
+    padding: 20px;
+  }
 }
 
 

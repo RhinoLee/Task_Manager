@@ -13,7 +13,7 @@ class Task < ApplicationRecord
     if title != '' || status != ''
       Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%").sort_by_createtime
     else
-      Task.sort_by_createtime
+      Task.all
     end
 
   end

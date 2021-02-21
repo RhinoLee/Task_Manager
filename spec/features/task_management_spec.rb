@@ -27,7 +27,7 @@ RSpec.feature "Task management", :type => :feature do
     task_short = Task.create(title: "old task", content: "old content", end_time: "2021/02/17", status: "待處理")
     task_long = Task.create(title: "new task", content: "new content", end_time: "2021/04/20", status: "待處理")
 
-    find('#end_time_btn').click
+    find('.sort-btn.end_time').click
 
     expect( page.body.index(task_long.title) ).to be > page.body.index(task_short.title)
 
