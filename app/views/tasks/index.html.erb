@@ -1,45 +1,61 @@
 
-<h1>任務列表</h1>
-<%= @task_title %>
-
-<div class="index-table">
-  <%= link_to '新增任務', new_task_path %>
-
-  <h3>按時間排序</h3>
-  <ul>
-    <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
-    <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
-  </ul>
-
-  <h3>按優先順序排序</h3>
-  <ul>
-    <li><%= link_to '從高到低', tasks_path(sort: 'level_desc'), id: 'level_desc_btn' %></li>
-    <li><%= link_to '從低到高', tasks_path(sort: 'level_asc'), id: 'level_asc_btn' %></li>
-  </ul>
-
-  <%= form_with(url: search_tasks_path, method: :get, class: 'search-form') do |f| %>
-    <%= f.text_field :title, class: 'search-title', placeholder: '搜尋任務名稱' %>
+<header>
+  <h1>任務列表</h1>
+</header>
+<div class="container">
+  
+  <%= @task_title %>
+  
+  <div class="task-wrapper">
+    <div class="table-action">
+      <%= link_to '新增任務', new_task_path %>
+  
+      <h3>按時間排序</h3>
+      <ul>
+        <li><%= link_to '按結束時間排序', tasks_path(sort: 'end_time'), id: 'end_time_btn' %></li>
+        <li><%= link_to '按新增時間排序', tasks_path(sort: 'create_time'), id: 'create_time_btn' %></li>
+      </ul>
     
-    <%= f.radio_button :status, '全部' %> 
-    <%= label :status, '全部' %>
-    <%= f.radio_button :status, '待處理' %> 
-    <%= label :status, '待處理' %>
-    <%= f.radio_button :status, '處理中' %> 
-    <%= label :status, '處理中' %>
-    <%= f.radio_button :status, '完成' %>
-    <%= label :status, '完成' %>
+      <h3>按優先順序排序</h3>
+      <ul>
+        <li><%= link_to '從高到低', tasks_path(sort: 'level_desc'), id: 'level_desc_btn' %></li>
+        <li><%= link_to '從低到高', tasks_path(sort: 'level_asc'), id: 'level_asc_btn' %></li>
+      </ul>
+      
+      <h3>搜尋任務</h3>
+      <%= form_with(url: search_tasks_path, method: :get, class: 'search-form') do |f| %>
+        <%= f.text_field :title, class: 'search-title', placeholder: '搜尋任務名稱' %>
+        
+        <%= f.radio_button :status, '全部' %> 
+        <%= label :status, '全部' %>
+        <%= f.radio_button :status, '待處理' %> 
+        <%= label :status, '待處理' %>
+        <%= f.radio_button :status, '處理中' %> 
+        <%= label :status, '處理中' %>
+        <%= f.radio_button :status, '完成' %>
+        <%= label :status, '完成' %>
+    
+        <%= f.submit "Search", class: 'submit-btn', style: "display:none" %>
+      <% end %>
+    </div>
 
-    <%= f.submit "Search", class: 'submit-btn', style: "display:none" %>
-  <% end %>
+    <div class="tasks-table">
+      <div class="container">
+        <div class="row">
+          <%= render '/tasks/task', tasks: @tasks if @tasks %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  
+  <%= paginate @tasks, :param_name => "tasks_page" %>
+  
 </div>
 
 
-<div class="tasks-table">
-  <%= render '/tasks/task', tasks: @tasks if @tasks %>
-</div>
-
-
-<%= paginate @tasks, :param_name => "tasks_page" %>
 
 
 

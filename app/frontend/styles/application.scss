@@ -1,0 +1,95 @@
+$color-red: #ff6b6b;
+$color-red-2: #D12400;
+$color-red-3: #B01D01;
+$color-yellow: #ff9f43;
+$color-green: #10ac84;
+
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 22px;
+  color: #fff;
+  font-weight: normal;
+  letter-spacing: 2px;
+  padding: 5px 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background: $color-green;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: -30px;
+}
+
+[class ^='col-'] {
+  padding: 0 15px;
+}
+
+.task-wrapper {
+  a {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+}
+
+.table-action {
+  margin-top: 40px;
+  a {
+    background: $color-green;
+  }
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  ul {
+    display: flex;
+    margin-bottom: 30px;
+    li + li {
+      margin-left: 10px;
+    }
+  }
+}
+
+.tasks-table {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.task {
+  border-radius: 15px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: $color-yellow;
+  color: #fff;
+  line-height: 1.6;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+
+
+// pagiantion
+.pagination {
+  // a {
+  //   color: #000;
+  // }
+}
