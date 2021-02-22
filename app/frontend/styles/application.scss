@@ -3,6 +3,7 @@ $color-red-2: #D12400;
 $color-red-3: #B01D01;
 $color-yellow: #ff9f43;
 $color-green: #10ac84;
+$color-grey: #7e7e7e;
 
 .task {
   &.yellow {
@@ -17,6 +18,28 @@ $color-green: #10ac84;
   &.complete {
     background: $color-green;
   }
+}
+
+.shadow-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 15px #ccc;
+}
+
+.update-btn {
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background: #fff;
+  box-shadow: 0px 0px 15px #ccc;
+  cursor: pointer;
 }
 
 * {
@@ -106,77 +129,24 @@ header {
   }
 }
 
-
-
-// pagiantion
-.pagination {
-  // a {
-  //   color: #000;
-  // }
-}
-
-// show page 
-.show-page {
+// inner-page
+.task-card-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
   background: #EEEEEC;
   i {
-    color: #7e7e7e;
+    color: $color-grey;
   }
-  .task-box {
-    border-radius: 10px;
-    padding: 20px;
-    width: 350px;
-    height: auto;
-    background: #fff;
-    box-shadow: 0px 0px 15px #ccc;
-    .task-info {
-      border-bottom: 1px solid #000;
-      margin-bottom: 30px;
-      padding-top: 15px;
-      padding-bottom: 30px;
-      span {
-        font-size: 20px;
-        line-height: 1.8;
-      }
-      h2.title {
-        margin-bottom: 10px;
-        font-size: 36px;
-        font-weight: bold;
-      }
-      .content p {
-        font-size: 20px;
-        line-height: 1.5;
-      }
-    }
-    .link {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50px;
-        height: 50px;
-        background: #fff;
-        border-radius: 50%;
-        box-shadow: 0px 0px 15px #ccc;
-        & + a {
-          margin-left: 30px;
-        }
-        i {
-          font-size: 20px;
-        }
-      }
-    }
+  h1 {
+    font-size: 36px;
+    color: $color-grey;
   }
-  
   .back {
-    color: #7e7e7e;
+    color: $color-grey;
     i {
       display: inline-block;
       padding-right: 5px;
@@ -184,3 +154,72 @@ header {
     }
   }
 }
+
+.task-card {
+  border-radius: 10px;
+  padding: 20px;
+  width: 350px;
+  height: auto;
+  background: #fff;
+  box-shadow: 0px 0px 15px #ccc;
+  overflow: hidden;
+  span, label {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+  .task-info {
+    border-bottom: 1px solid #000;
+    margin-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    h2.title {
+      margin-bottom: 10px;
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .content p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0px 0px 15px #ccc;
+      & + a {
+        margin-left: 30px;
+      }
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &.form {
+    form > [class^= 'task-'] {
+      margin: 15px 0;
+    }
+    textarea, input {
+      outline: none;
+    }
+    textarea, input[type="text"] {
+      border: 1px solid $color-grey;
+      padding: 2px 5px;
+    }
+    textarea {
+      width: 100%;
+    }
+  }
+}
+
+
+

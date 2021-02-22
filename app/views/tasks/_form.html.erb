@@ -1,40 +1,52 @@
-<%= form_with model: task do |form| %>
-  <%= form.label :title, '任務標題' %><br>
-  <%= form.text_field :title %>
-  <br>
-  <br>
-  <%= form.label :content, '任務內容' %><br>
-  <%= form.text_area :content, size: "30x10" %>
-  <br>
-  <%= form.label :end_time, '結束時間' %><br>
-  <%= form.date_field :end_time, size: "30x10" %>
-  <br>
-  <br>
 
-  <h3 class="title">任務狀態</h3>
-  <%= form.radio_button :status, "待處理", checked: true %>
-  <%= form.label :status_待處理, "待處理" %>
+<div class="task-card form">
+  <%= form_with model: task do |form| %>
+    <div class="task-title">
+      <%= form.label :title, '任務標題' %><br>
+      <%= form.text_field :title %>
+    </div>
+   
+    <div class="task-content">
+      <%= form.label :content, '任務內容' %><br>
+      <%= form.text_area :content, size: "30x10" %>
+    </div>
 
-  <%= form.radio_button :status, "處理中" %>
-  <%= form.label :status_處理中, "處理中" %>
+    <div class="task-end-time">
+      <%= form.label :end_time, '結束時間' %><br>
+      <%= form.date_field :end_time, size: "30x10" %>
+    </div>
+  
+    <div class="task-status">
+      <span>任務狀態</span>
+      <%= form.radio_button :status, "待處理", checked: true %>
+      <%= form.label :status_待處理, "待處理" %>
 
-  <%= form.radio_button :status, "完成" %>
-  <%= form.label :status_完成, "完成" %>
-  <br>
-  <br>
+      <%= form.radio_button :status, "處理中" %>
+      <%= form.label :status_處理中, "處理中" %>
+    
+      <%= form.radio_button :status, "完成" %>
+      <%= form.label :status_完成, "完成" %>
+    </div>
+    
+    <div class="task-level">
+      <span class="title">優先順序</span>
+      <%= form.radio_button :level, "0", checked: true %>
+      <%= form.label :level_0, "低" %>
+    
+      <%= form.radio_button :level, "1" %>
+      <%= form.label :level_1, "中" %>
+    
+      <%= form.radio_button :level, "2" %>
+      <%= form.label :level_2, "高" %>
+    </div>
 
-  <h3 class="title">優先順序</h3>
-  <%= form.radio_button :level, "0", checked: true %>
-  <%= form.label :level_0, "低" %>
+    <%= form.submit form_action(task), class: 'update-btn' %>
+    
+  <% end %>
+  
+  <%= link_to task_path(params[:id]), class: 'back' do %>
+    <i class="fas fa-arrow-left"></i>回任務
+  <% end %>
 
-  <%= form.radio_button :level, "1" %>
-  <%= form.label :level_1, "中" %>
+</div>
 
-  <%= form.radio_button :level, "2" %>
-  <%= form.label :level_2, "高" %>
-
-  <br>
-  <br>
-
-  <%= form.submit form_action(task) %>
-<% end %>
