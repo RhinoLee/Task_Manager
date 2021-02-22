@@ -1,12 +1,15 @@
-<h1>新增任務</h1>
+<div class="task-card-wrapper">
+  <h1>新增任務</h1>
 
-<% if @task.errors.any? %>
-  <ul>
-    <% @task.errors.each do |error| %>
-      <li><%= error.full_message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<%= render 'form', task: @task %>
+  <%= render 'form', task: @task %>
+</div>
+
 
