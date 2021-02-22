@@ -11,7 +11,7 @@ class Task < ApplicationRecord
 
   def self.search(title = '', status = '')
     if title != '' || status != ''
-      Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%").sort_by_createtime
+      Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%")
     else
       Task.all
     end
