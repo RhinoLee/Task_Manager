@@ -11,7 +11,8 @@ document.addEventListener('turbolinks:load', function(){
   
   if(searchTitle || searchStatus.length > 0) {
     let tasks = []
-    const getTasks = function(e){
+
+    const getTasks = () => {
 
       let searchTime = null;
       let title = searchTitle.value.trim()
@@ -37,12 +38,46 @@ document.addEventListener('turbolinks:load', function(){
       
     }
 
-    const renderTask = function(){
+    const levelToString = level => {
+      let levelStr = ''
+      switch (level) {
+        case 0: 
+          levelStr = '低'
+          break
+        case 1: 
+          levelStr = '中'
+          break
+        case 2: 
+          levelStr = '高'
+          break
+      }
+      return levelStr
+    }
 
+    const levelToColor = level => {
+      let color = ''
+      switch(level) {
+        case 0:
+          color = 'yellow'
+          break;
+        case 1:
+          color = 'red'
+          break;
+        case 2:
+          color = 'red-3'
+          break;
+      }
+      return color
+    }
+
+    const completeColor = status => status === '完成' ? 'complete' : ''
+
+    const renderTask = () => {
+      
       const tasksHtml = tasks.map(task => {
         return `
         <div class="col-3">
-          <div class="task" data-title="${task.title}" data-status="${task.status}">
+          <div class="task ${levelToColor(task.level)} ${completeColor(task.status)}" data-title="${task.title}" data-status="${task.status}">
             <a href="/tasks/${task.id}">
               <h3 class="title">${task.title}</h3>
               <h4>
@@ -51,7 +86,7 @@ document.addEventListener('turbolinks:load', function(){
               </h4>
               <h4>
                 <span>優先順序：</span>
-                <span>${task.level}</span>
+                <span>${levelToString(task.level)}</span>
               </h4>
               <ul>
                 <li>任務內容：${task.content}</li>
@@ -59,17 +94,17 @@ document.addEventListener('turbolinks:load', function(){
               </ul>
             </a>
           </div>
-      </div>
+        </div>
       `
       }).join('')
 
       tasksTable.innerHTML = tasksHtml
-
     }
 
 
 
     searchTitle.addEventListener("keyup", getTasks)
+    
     searchForm.addEventListener("submit", function(e){
       e.preventDefault();
       getTasks()
@@ -87,9 +122,10 @@ document.addEventListener('turbolinks:load', function(){
       })
     })
 
+    getTasks()
   }
   
-
+  
 })
 
 

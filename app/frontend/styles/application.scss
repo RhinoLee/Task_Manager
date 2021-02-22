@@ -4,6 +4,20 @@ $color-red-3: #B01D01;
 $color-yellow: #ff9f43;
 $color-green: #10ac84;
 
+.task {
+  &.yellow {
+    background: $color-yellow;
+  }
+  &.red {
+    background: $color-red;
+  }
+  &.red-3 {
+    background: $color-red-3;
+  }
+  &.complete {
+    background: $color-green;
+  }
+}
 
 * {
   font-family: 'Montserrat', sans-serif;
