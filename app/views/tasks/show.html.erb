@@ -1,17 +1,45 @@
-<h2 class="title">任務名稱：<%= @task.title %></h2>
-<h4>
-  <span>狀態：</span>
-  <span><%= @task.status %></span>
-</h4>
+<div class="show-page">
+  <div class="task-box">
+    <div class="task-info">
+      <h2 class="title"><%= @task.title %></h2>
 
-<p class="content">任務內容：<%= @task.content %></p>
+      <div class="level">
+        <span>優先順序：</span>
+        <span><%= levelToWord(@task.level) %></span>
+      </div>
 
+      <div class="date">
+        <span>結束時間：</span>
+        <span><%= @task.end_time.strftime("%Y/%m/%d") %></span>
+      </div>
+  
+      <div class="status">
+        <span>狀態：</span>
+        <span><%= @task.status %></span>
+      </div>
+  
+      <div class="content">
+        <span>任務內容：</span>
+        <p><%= @task.content %></p>
+      </div>
 
-<%= link_to '編輯任務', edit_task_path(@task) %>
-<%= link_to '刪除任務', task_path(@task), 
-                       method: 'DELETE', 
-                       data: { confirm: '確定要刪除任務？' }  %>
-
-<br>
-<br>
-<%= link_to '回任務列表', :root %>
+      
+  
+    </div>
+  
+    <div class="link">
+      
+      <%= link_to edit_task_path(@task) do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+      <%= link_to task_path(@task), method: 'DELETE', data: { confirm: '確定要刪除任務？' } do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
+    
+  
+    <%= link_to :root, class: 'back' do %>
+      <i class="fas fa-arrow-left"></i>回列表
+    <% end %>
+  </div>
+</div>
