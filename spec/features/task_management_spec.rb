@@ -21,40 +21,40 @@ RSpec.feature "Task management", :type => :feature do
     expect( page.body.index(task_new.title) ).to be < page.body.index(task_old.title)
   end
 
-  scenario "任務列表以結束時間排序" do
-    visit "/"
+  # scenario "任務列表以結束時間排序" do
+  #   visit "/"
 
-    task_short = Task.create(title: "old task", content: "old content", end_time: "2021/02/17", status: "待處理")
-    task_long = Task.create(title: "new task", content: "new content", end_time: "2021/04/20", status: "待處理")
+  #   task_short = Task.create(title: "old task", content: "old content", end_time: "2021/02/17", status: "待處理")
+  #   task_long = Task.create(title: "new task", content: "new content", end_time: "2021/04/20", status: "待處理")
 
-    find('.sort-btn.end_time').click
+  #   find('.sort-btn.end_time').click
 
-    expect( page.body.index(task_long.title) ).to be > page.body.index(task_short.title)
+  #   expect( page.body.index(task_long.title) ).to be > page.body.index(task_short.title)
 
-  end
+  # end
 
-  scenario "任務依照優先順序由高到低排序" do
-    visit "/"
+  # scenario "任務依照優先順序由高到低排序" do
+  #   visit "/"
 
-    task_important = Task.create(title: "task_important", content: "old content", end_time: "2021/02/17", status: "待處理", level: 2)
-    task_lazy = Task.create(title: "task_lazy", content: "new content", end_time: "2021/04/20", status: "待處理", level: 0)
+  #   task_important = Task.create(title: "task_important", content: "old content", end_time: "2021/02/17", status: "待處理", level: 2)
+  #   task_lazy = Task.create(title: "task_lazy", content: "new content", end_time: "2021/04/20", status: "待處理", level: 0)
 
-    find('#level_desc_btn').click
+  #   find('#level_desc_btn').click
 
-    expect( page.body.index(task_important.title) ).to be < page.body.index(task_lazy.title)
+  #   expect( page.body.index(task_important.title) ).to be < page.body.index(task_lazy.title)
 
-  end
+  # end
 
-  scenario "任務依照優先順序由低到高排序" do
-    visit "/"
+  # scenario "任務依照優先順序由低到高排序" do
+  #   visit "/"
 
-    task_important = Task.create(title: "task_important", content: "old content", end_time: "2021/02/17", status: "待處理", level: 2)
-    task_lazy = Task.create(title: "task_lazy", content: "new content", end_time: "2021/04/20", status: "待處理", level: 0)
+  #   task_important = Task.create(title: "task_important", content: "old content", end_time: "2021/02/17", status: "待處理", level: 2)
+  #   task_lazy = Task.create(title: "task_lazy", content: "new content", end_time: "2021/04/20", status: "待處理", level: 0)
 
-    find('#level_asc_btn').click
+  #   find('#level_asc_btn').click
 
-    expect( page.body.index(task_important.title) ).to be > page.body.index(task_lazy.title)
+  #   expect( page.body.index(task_important.title) ).to be > page.body.index(task_lazy.title)
 
-  end
+  # end
 
 end
