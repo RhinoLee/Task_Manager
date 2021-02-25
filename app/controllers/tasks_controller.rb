@@ -10,7 +10,9 @@ class TasksController < ApplicationController
   end
 
   def create 
-    @task = Task.new(task_params)
+    @user = User.first
+    @task = @user.tasks.build(task_params)
+    # @task = Task.new(task_params)
 
     if @task.save
       redirect_to :root, notice: "任務新增成功！"

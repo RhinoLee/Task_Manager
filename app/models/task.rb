@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  belongs_to :user
 
   validates :title, presence: true
   validates :content, presence: true
@@ -13,7 +14,7 @@ class Task < ApplicationRecord
     if title != '' || status != ''
       Task.where("title LIKE ? AND status LIKE ?", "%#{title}%", "%#{status}%")
     else
-      Task.all
+      Task.sort_by_createtime
     end
 
   end
