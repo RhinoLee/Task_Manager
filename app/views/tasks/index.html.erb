@@ -1,6 +1,14 @@
 
 <header>
   <h1>任務列表</h1>
+
+  <nav class="user">
+    <ul>
+      <li><%= @user.email if @user %></li>
+      <li><%= link_to '註冊', sign_up_path %></li>
+    </ul>
+
+  </nav>
 </header>
 <div class="container">
   
