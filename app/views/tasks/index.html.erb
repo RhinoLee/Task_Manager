@@ -4,8 +4,15 @@
 
   <nav class="user">
     <ul>
-      <li><%= @user.email if @user %></li>
-      <li><%= link_to '註冊', sign_up_path %></li>
+      <% if @user %>
+        <li><%= @user.email if @user %></li>
+        <li><%= link_to '登出', logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to '註冊', sign_up_path %></li>
+      <% end %>
+      
+      
+      
     </ul>
 
   </nav>
