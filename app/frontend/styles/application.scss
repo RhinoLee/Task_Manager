@@ -5,6 +5,14 @@ $color-yellow: #ff9f43;
 $color-green: #10ac84;
 $color-grey: #7e7e7e;
 
+%clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
 .task {
   &.yellow {
     background: $color-yellow;
@@ -52,7 +60,6 @@ h1 {
   color: #fff;
   font-weight: normal;
   letter-spacing: 2px;
-  padding: 5px 10px;
 }
 
 a {
@@ -60,7 +67,31 @@ a {
 }
 
 header {
+  @extend %clearfix;
+  padding: 5px 10px;
   background: $color-green;
+  
+
+  > .logo {
+    float: left;
+  }
+
+  > .nav-bar {
+    float: right;
+    ul {
+      @extend %clearfix;
+      li, a {
+        line-height: 32px;
+      }
+      li {
+        padding: 0 15px;
+        float: left;
+      }
+      a {
+        color: #fff
+      }
+    }
+  }
 }
 
 .container {
