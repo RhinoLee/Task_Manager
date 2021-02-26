@@ -1,4 +1,20 @@
+<header>
+  <h1>任務列表</h1>
 
+  <nav class="user">
+    <ul>
+      <% if Current.user %>
+        <li><%= Current.user.email %></li>
+        <li><%= link_to '登出', logout_path, method: :delete %></li>
+        <li><%= link_to '更改密碼', edit_password_path %></li>
+      <% else %>
+        <li><%= link_to '註冊', sign_up_path %></li>
+        <li><%= link_to '登入', sign_in_path %></li>
+      <% end %>
+    </ul>
+
+  </nav>
+</header>
 
 <div class="container">
   

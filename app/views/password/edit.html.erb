@@ -1,13 +1,10 @@
 <div class="container">
-  <%= form_with model: @user, url: sign_up_path do |form| %>
+  <%= form_with model: Current.user, url: edit_password_path do |form| %>
     <% if form.object.errors.any? %>
       <% form.object.errors.full_messages.each do |message| %>
         <p><%= message %></p>
       <% end %>
     <% end %>  
-
-  <%= form.label :email, '信箱' %>
-    <%= form.text_field :email, placeholder: 'user@gmail.com' %>
 
     <%= form.label :password, '密碼' %>
     <%= form.password_field :password %>
@@ -15,6 +12,6 @@
     <%= form.label :password_confirmation, '確認密碼' %>
     <%= form.password_field :password_confirmation %>
 
-    <%= form.submit '註冊' %>
+    <%= form.submit '更改密碼' %>
   <% end %>
 </div>

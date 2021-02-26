@@ -3,10 +3,6 @@ class TasksController < ApplicationController
 
   def index 
     @tasks = Task.sort_by_createtime
-
-    if session[:user_id]
-      @user = User.find_by(id: session[:user_id])
-    end
   end
 
   def new 

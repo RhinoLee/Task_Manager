@@ -7,10 +7,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_user
-    if session[:id] 
-      Current.user = User.find_by(id: session[:id])
-      # current_user = User.find_by(id: session[:id])
+    if session[:user_id] 
+      Current.user = User.find_by(id: session[:user_id])
     end
+  end
+
+  def require_logged_in
+    redirect_to sign_in_path, alert: "請先登入" if Current.user.nil?
   end
 
 end
