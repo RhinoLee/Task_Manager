@@ -1,17 +1,18 @@
 class TasksController < ApplicationController
+  before_action :require_logged_in
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index 
-    @tasks = Task.sort_by_createtime
+    @tasks = Current.user.tasks.sort_by_createtime
+    # @tasks = Task.sort_by_createtime
   end
 
   def new 
-    @task = Task.new
+    @task = Current.user.tasks.new
   end
 
   def create 
-    @user = User.first
-    @task = @user.tasks.build(task_params)
+    @task = Current.user.tasks.build(task_params)
     # @task = Task.new(task_params)
 
     if @task.save
@@ -44,7 +45,7 @@ class TasksController < ApplicationController
 
   def filter 
 
-    @tasks = Task.search(params[:title], params[:status])
+    @tasks = Current.user.tasks.search(params[:title], params[:status])
     sort_task(params[:sort], @tasks) if params[:sort]
 
     render json: {tasks: @tasks }
@@ -58,7 +59,7 @@ class TasksController < ApplicationController
   end
 
   def find_task 
-    @task = Task.find(params[:id])
+    @task = Current.user.tasks.find(params[:id])
   end
 
   def sort_task(sort = nil, tasks = nil)
