@@ -1,5 +1,7 @@
 zh-TW:
   activerecord:
+    models:
+      user: "會員"
     attributes:
       task:
         title: "任務名稱"
