@@ -15,16 +15,20 @@ $color-grey: #7e7e7e;
 
 .task {
   &.yellow {
-    background: $color-yellow;
+    box-shadow: 0 0 10px $color-yellow;
+    // background: $color-yellow;
   }
   &.red {
-    background: $color-red;
+    box-shadow: 0 0 10px $color-red;
+    // background: $color-red;
   }
   &.red-3 {
-    background: $color-red-3;
+    box-shadow: 0 0 10px $color-red-3;
+    // background: $color-red-3;
   }
   &.complete {
-    background: $color-green;
+    box-shadow: 0 0 10px $color-green;
+    // background: $color-green;
   }
 }
 
@@ -101,8 +105,6 @@ header {
 .row {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
-  margin-left: -30px;
 }
 
 [class ^='col-'] {
@@ -110,6 +112,7 @@ header {
 }
 
 .col-3 {
+  margin-bottom: 30px;
   width: 33.333333%;
 }
 
@@ -125,6 +128,7 @@ header {
 
 .table-action {
   margin-top: 40px;
+  padding-left: 30px;
   a {
     background: $color-green;
   }
@@ -148,15 +152,38 @@ header {
 
 .task {
   border-radius: 15px;
-  margin-bottom: 20px;
-  background: $color-yellow;
-  color: #fff;
+  height: 100%;
+  background: #fff;
   line-height: 1.6;
   font-size: 20px;
   letter-spacing: 1px;
+  * {
+    color: $color-grey;
+  }
   a {
     display: block;
     padding: 20px;
+    height: 100%;
+  }
+  h3.title {
+    margin-bottom: 10px;
+  }
+  .status-wrap, .order-wrap, .end-time-wrap { 
+    display: flex;
+    align-items: center;
+  }
+  .content-wrap {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    h4 {
+      margin-bottom: 5px;
+    }
+    .content {
+      border: 1px solid #fff;
+      padding: 10px;
+      height: 150px;
+      overflow-y: scroll;
+    }
   }
 }
 

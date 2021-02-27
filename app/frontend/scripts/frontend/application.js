@@ -80,18 +80,27 @@ document.addEventListener('turbolinks:load', function(){
           <div class="task ${levelToColor(task.level)} ${completeColor(task.status)}" data-title="${task.title}" data-status="${task.status}">
             <a href="/tasks/${task.id}">
               <h3 class="title">${task.title}</h3>
-              <h4>
-                <span>狀態：</span>
+
+              <div class="status-wrap">
+                <h4>狀態：</h4>
                 <span>${task.status}</span>
-              </h4>
-              <h4>
-                <span>優先順序：</span>
+              </div>
+
+              <div class="order-wrap">
+                <h4>優先順序：</h4>
                 <span>${levelToString(task.level)}</span>
-              </h4>
-              <ul>
-                <li>任務內容：${task.content}</li>
-                <li>結束時間：${task.end_time}</li>
-              </ul>
+              </div>
+
+              <div class="content-wrap">
+                <h4>任務內容：</h4>
+                <div class="content">${task.content}</div>
+              </div>
+
+              <div class="end-time-wrap">
+                <h4>結束時間：</h4>
+                <span>${task.end_time}</span>
+              </div>
+
             </a>
           </div>
         </div>
