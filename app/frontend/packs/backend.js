@@ -1,6 +1,6 @@
 
-import 'scripts/frontend'
-import 'styles/frontend'
+import 'scripts/backend'
+import 'styles/backend '
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"

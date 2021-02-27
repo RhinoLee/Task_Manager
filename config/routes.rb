@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # general user
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
 
@@ -15,6 +16,12 @@ Rails.application.routes.draw do
   patch 'password', to: 'password#update'
 
   delete 'logout', to: 'sessions#destroy'
+
+  # admin user
+  namespace :admin do 
+    root 'users#index'
+    resources :users
+  end
 
   root 'tasks#index'
 
