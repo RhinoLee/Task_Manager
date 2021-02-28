@@ -48,8 +48,6 @@ class TasksController < ApplicationController
     @tasks = Current.user.tasks
     @tasks = sort_task(params[:sort], @tasks) if params[:sort]
     @tasks = @tasks.search(params[:title], params[:status])
-    # @tasks = Current.user.tasks.order(end_time: :asc).search(params[:title], params[:status])
-    # 
 
     render json: {tasks: @tasks }
 

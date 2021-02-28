@@ -37,7 +37,6 @@ document.addEventListener('turbolinks:load', function(){
         })
         .then(res => {
           tasks = res.data.tasks
-          console.log(tasks);
           renderTask()
         })
         .catch(err => err)
