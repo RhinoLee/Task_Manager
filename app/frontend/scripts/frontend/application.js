@@ -13,7 +13,7 @@ document.addEventListener('turbolinks:load', function(){
     let tasks = []
 
     const getTasks = () => {
-
+      let url = ''
       let searchTime = null;
       let title = searchTitle.value.trim()
       let status = '';
@@ -23,14 +23,21 @@ document.addEventListener('turbolinks:load', function(){
         }
       })
 
+      if(sortType){
+        url = `/tasks/filter?title=${title}&status=${status}&sort=${sortType}`
+      }else{
+        url = `/tasks/filter?title=${title}&status=${status}`
+      }
+
       clearTimeout(searchTime)
       searchTime = setTimeout(function(){
         axios({
           method: 'get', 
-          url: `/tasks/filter?title=${title}&status=${status}&sort=${sortType}`,
+          url: `${url}`,
         })
         .then(res => {
           tasks = res.data.tasks
+          console.log(tasks);
           renderTask()
         })
         .catch(err => err)
@@ -136,28 +143,3 @@ document.addEventListener('turbolinks:load', function(){
   
   
 })
-
-
-
-
-
-
-
-
-
-
-
-
-// searchTime = setTimeout(function(){
-//   Rails.ajax({
-//     url: `/tasks/?title=${title}&status=${status}`,
-//     type: 'GET',
-//     dataType: 'json', 
-//     success: (res) => {
-//       console.log(res);
-//     },
-//     error: function(err){
-//       console.log(err);
-//     }
-//   })
-// }, 500)

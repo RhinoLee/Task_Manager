@@ -45,8 +45,11 @@ class TasksController < ApplicationController
 
   def filter 
 
-    @tasks = Current.user.tasks.search(params[:title], params[:status])
-    sort_task(params[:sort], @tasks) if params[:sort]
+    @tasks = Current.user.tasks
+    @tasks = sort_task(params[:sort], @tasks) if params[:sort]
+    @tasks = @tasks.search(params[:title], params[:status])
+    # @tasks = Current.user.tasks.order(end_time: :asc).search(params[:title], params[:status])
+    # 
 
     render json: {tasks: @tasks }
 
@@ -62,7 +65,7 @@ class TasksController < ApplicationController
     @task = Current.user.tasks.find(params[:id])
   end
 
-  def sort_task(sort = nil, tasks = nil)
+  def sort_task(sort = 'create_time', tasks = nil)
     case sort
     when "end_time"
       @tasks = tasks.sort_by_endtime

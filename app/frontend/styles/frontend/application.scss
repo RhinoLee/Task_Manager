@@ -13,6 +13,10 @@ $color-grey: #7e7e7e;
   }
 }
 
+body {
+  background: #EEEEEC;
+}
+
 .task {
   &.yellow {
     box-shadow: 0 0 10px $color-yellow;
@@ -151,7 +155,7 @@ header {
 }
 
 .task {
-  border-radius: 15px;
+  border-radius: 10px;
   height: 100%;
   background: #fff;
   line-height: 1.6;
@@ -173,13 +177,13 @@ header {
     align-items: center;
   }
   .content-wrap {
-    margin-top: 20px;
     margin-bottom: 20px;
     h4 {
       margin-bottom: 5px;
     }
     .content {
-      border: 1px solid #fff;
+      border-radius: 10px;
+      border: 1px solid $color-grey;
       padding: 10px;
       height: 150px;
       overflow-y: scroll;
