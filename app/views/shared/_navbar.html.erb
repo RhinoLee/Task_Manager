@@ -20,3 +20,7 @@
     </nav>
   </div>
 </header>
+
+<% flash.each do |type, msg| %>
+  <div class="flash-error"><%= msg %></div>
+<% end %>

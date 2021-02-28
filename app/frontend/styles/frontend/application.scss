@@ -14,7 +14,28 @@ $color-grey: #7e7e7e;
 }
 
 body {
+  width: 100%;
+  height: 100vh;
+  padding-top: 70px;
   background: #EEEEEC;
+}
+.flash-error {
+  position: fixed;
+  left: 0;
+  top: 42px;
+  padding: 10px 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba($color-red-3, .7);
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.user-form-error {
+  * {
+    color: $color-red-2
+  }
 }
 
 .task {
@@ -76,7 +97,11 @@ a {
 
 header {
   @extend %clearfix;
-  padding: 5px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 45px;
   background: $color-green;
   
 
@@ -94,6 +119,7 @@ header {
       li {
         padding: 0 15px;
         float: left;
+        color: #fff
       }
       a {
         color: #fff
@@ -216,8 +242,7 @@ header {
     }
   }
 }
-
-.task-card {
+.task-card, .member-card {
   border-radius: 10px;
   padding: 20px;
   width: 350px;
@@ -225,6 +250,8 @@ header {
   background: #fff;
   box-shadow: 0px 0px 15px #ccc;
   overflow: hidden;
+}
+.task-card {
   span, label {
     font-size: 18px;
     line-height: 1.8;
@@ -280,6 +307,54 @@ header {
     textarea {
       width: 100%;
     }
+  }
+}
+
+
+
+// login, registation page 
+.member-system {
+  height: 100%;
+  h1.title {
+    font-size: 22px;
+    color: $color-grey;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label {
+      display: block;
+      padding-bottom: 5px;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    [class ^= 'user-'] {
+      margin: 20px 0;
+    }
+    form, input {
+      width: 100%;;
+    }
+    input[type="text"], input[type="password"] {
+      border: 1px solid $color-grey;
+      padding: 10px 15px;
+    }
+    input[type="submit"] {
+      border: none;
+      padding: 5px 15px;
+      background: $color-green;
+      width: auto;
+      color: #fff;
+      font-size: 16px;
+    }
+
   }
 }
 
