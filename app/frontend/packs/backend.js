@@ -1,5 +1,6 @@
 
 import 'scripts/backend'
+import 'styles/shared'
 import 'styles/backend '
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
