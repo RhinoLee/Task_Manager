@@ -10,6 +10,4 @@ class User < ApplicationRecord
     admin: 1
   }
 
-  user = User.find_by_email("terry@gmail.com")
-  user.update_attribute(:role, 1)
 end
