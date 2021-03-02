@@ -1,5 +1,4 @@
-class Admin::UsersController < ApplicationController
-  layout 'backend'
+class Admin::UsersController < Admin::BaseController
   before_action :find_user, only: [:edit, :show, :update, :destroy]
   
   def index 
@@ -53,7 +52,6 @@ class Admin::UsersController < ApplicationController
   def find_user 
     @user = User.find_by(id: params[:id])
   end
-
 
 
 end
