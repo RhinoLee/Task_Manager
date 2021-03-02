@@ -79,6 +79,10 @@ body {
   cursor: pointer;
 }
 
+.table-action a {
+  
+}
+
 * {
   font-family: 'Noto Sans TC', sans-serif;
   box-sizing: border-box;
@@ -128,8 +132,20 @@ header {
   }
 }
 
+.back {
+  margin-top: 15px;
+  color: $color-grey;
+  i {
+    display: inline-block;
+    padding-right: 5px;
+    font-size: 15px;
+  }
+}
+
 .container {
+  margin: auto;
   padding: 0 15px;
+  max-width: 1200px;
 }
 
 .row {
@@ -154,13 +170,26 @@ header {
     color: #fff;
     letter-spacing: 1px;
   }
+  input.search-title {
+    border: 1px solid $color-green;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+  }
 }
 
 .table-action {
   margin-top: 40px;
   padding-left: 30px;
   a {
-    background: $color-green;
+    border: 1px solid $color-green;
+    background: #fff;
+    color: $color-green;
+    transition: .3s;
+    &:hover, &.active {
+      background: $color-green;
+      color: #fff;
+    }
   }
   h3 {
     margin-top: 15px;
@@ -230,16 +259,9 @@ header {
     color: $color-grey;
   }
   h1 {
+    margin-bottom: 20px;
     font-size: 36px;
     color: $color-grey;
-  }
-  .back {
-    color: $color-grey;
-    i {
-      display: inline-block;
-      padding-right: 5px;
-      font-size: 15px;
-    }
   }
 }
 .task-card, .member-card {
@@ -252,8 +274,9 @@ header {
   overflow: hidden;
 }
 .task-card {
+  width: 400px;
   span, label {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.8;
   }
   .task-info {
@@ -267,7 +290,7 @@ header {
       font-weight: bold;
     }
     .content p {
-      font-size: 18px;
+      font-size: 22px;
       line-height: 1.5;
     }
   }
@@ -303,6 +326,7 @@ header {
     textarea, input[type="text"] {
       border: 1px solid $color-grey;
       padding: 2px 5px;
+      font-size: 20px;
     }
     textarea {
       width: 100%;

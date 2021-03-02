@@ -1,4 +1,8 @@
+$color-green: #10ac84;
+$color-blue: #2565ae;
+$color-red-2: #D12400;
 .user-table {
+  width: 100%;
   th, td {
     padding: 10px 15px;
     text-align: center;
@@ -8,5 +12,63 @@
   }
   td {
     font-size: 18px;
+    &.delete a {
+      color: $color-red-2;
+      border-bottom: 1px solid $color-red-2;
+    }
   }
+  tr {
+    border-bottom: 1px solid $color-green;
+  }
+  a {
+    display: inline-block;
+    border-bottom: 1px solid $color-blue;
+    color: $color-blue;
+  }
+}
+
+.container.admin {
+  margin: auto;
+  padding-bottom: 70px;
+  width: 100%;
+  max-width: 1000px;
+  h1 {
+    color: #1a1a1a;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  nav.action a {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 15px;
+    background: $color-green;
+    color: #fff;
+  }
+}
+
+.member-system {
+  .user-role {
+    .normal, .admin {
+      display: flex;
+      align-items: center;
+      label {
+        font-size: 16px;
+      }
+    }
+    label {
+      margin-right: 13px;
+    }
+    input {
+      margin: 0;
+      width: auto;
+    }
+  }
+}
+
+.task {
+  padding: 20px;
+}
+
+.back {
+  padding-left: 20px;
 }

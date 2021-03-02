@@ -1,21 +1,35 @@
-<% @tasks.each do |task| %>
-  <div class="col-3">
-    <div class="task" data-title="<%= task.title %>" data-title="<%= task.title %>">
-      <h3 class="title"><%= task.title %></h3>
-      <h4>
-        <span>狀態：</span>
-        <span><%= task.status %></span>
-      </h4>
-      <h4>
-        <span>優先順序：</span>
-        <span><%= levelToWord(task.level) if task.level %></span>
-      </h4>
-      <ul>
-        <li>任務內容：<%= task.content %></li>
-        <% if task.end_time %>
-        <li>結束時間：<%= task.end_time.strftime("%Y/%m/%d") %></li>
-        <% end %>
-      </ul>
+<div class="tasks-table">
+  <div class="container">
+    <div class="row">
+      <% @tasks.each do |task| %>
+        <div class="col-3">
+          <div class="task" data-title="<%= task.title %>" data-title="<%= task.title %>">
+            <h3 class="title"><%= task.title %></h3>
+
+            <div class="status-wrap">
+              <h4>狀態：</h4>
+              <span><%= task.status %></span>
+            </div>
+         
+            <div class="order-wrap">
+              <h4>優先順序：</h4>
+              <span><%= levelToWord(task.level) if task.level %></span>
+            </div>
+
+            <% if task.end_time %>
+            <div class="end-time-wrap">
+              <h4>結束時間：</h4>
+              <span><%= task.end_time.strftime("%Y/%m/%d") %></span>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
+
+    <%= link_to :admin_root, class: 'back' do %>
+      <i class="fas fa-arrow-left"></i>回管理者列表
+    <% end %>
   </div>
-<% end %>
+</div>
+

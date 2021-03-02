@@ -40,7 +40,7 @@ document.addEventListener('turbolinks:load', function(){
           renderTask()
         })
         .catch(err => err)
-      }, 500)
+      }, 100)
       
     }
 
@@ -104,7 +104,7 @@ document.addEventListener('turbolinks:load', function(){
 
               <div class="end-time-wrap">
                 <h4>結束時間：</h4>
-                <span>${task.end_time}</span>
+                <span>${task.end_time ? task.end_time : '未定' }</span>
               </div>
 
             </a>
@@ -115,6 +115,13 @@ document.addEventListener('turbolinks:load', function(){
 
       tasksTable.innerHTML = tasksHtml
     }
+
+    const activeHandler = btn => {
+      sortBtns.forEach(btn => {
+        btn.classList.remove('active')
+      })
+      btn.classList.add('active')
+    } 
 
 
 
@@ -130,9 +137,12 @@ document.addEventListener('turbolinks:load', function(){
     })
 
     sortBtns.forEach( btn => {
+
       btn.addEventListener('click', function(e){
         e.preventDefault()
         sortType = this.dataset.action
+
+        activeHandler( btn )
         getTasks()
       })
     })

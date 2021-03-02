@@ -29,6 +29,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+
+    if @user.update(user_params) 
+      redirect_to :admin_root, notice: '使用者更新成功'
+    else 
+      render :edit
+    end
+
   end
 
   def destroy 
@@ -40,7 +47,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role)
   end
 
   def find_user 

@@ -10,7 +10,7 @@
 
       <div class="date">
         <span>結束時間：</span>
-        <span><%= @task.end_time.strftime("%Y/%m/%d") %></span>
+        <span><%= @task.end_time.strftime("%Y/%m/%d") if @task.end_time %></span>
       </div>
   
       <div class="status">

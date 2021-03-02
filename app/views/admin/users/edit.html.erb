@@ -1,1 +1,15 @@
-<%= render 'form', user: @user %>
+<div class="member-system">
+  
+  <div class="container">
+    <div class="member-card">
+      <h1 class="title">更新會員</h1>
+      <%= render 'editform', user: @user %>
+
+      <%= link_to :admin_root, class: 'back' do %>
+        <i class="fas fa-arrow-left"></i>回管理者列表
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
