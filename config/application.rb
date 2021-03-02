@@ -19,6 +19,7 @@ module TaskManager
 
     config.i18n.default_locale = "zh-TW"
     config.time_zone = "Taipei"
+    config.autoloader = :classic
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.before_configuration do
