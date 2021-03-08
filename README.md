@@ -1,4 +1,34 @@
-# README
+# 任務管理系統
+
+### 網站連結：https://protected-garden-50035.herokuapp.com/
+
+### 功能
+* 會員系統
+* 個人任務的 CRUD
+* 可設定任務狀態：待處理、處理中、已完成
+* 可設定任務結束時間，且按結束時間排序
+* 可設定任務優先順序：高、中、低，且按優先順序排序
+* 任務即時搜尋，可按任務狀態或名稱搜尋
+* 系統管理員後台
+
+### 預設帳號
+帳號：seed@gmail.com
+密碼：test
+管理員後台：網址列結尾輸入 /admin
+
+### 使用框架與技術
+* 前端：HTML, CSS, JavaScript, Axios
+* 後端框架：Ruby on Rails
+* 資料庫：PostgreSQL
+* 網站部署：Heroku
+* 版本控制：Git
+
+
+
+
+
+
+#### 案件紀錄
 
 table: users 
   name: string
@@ -20,7 +50,7 @@ table: task
   position: integer
 
 
-  ## Heroku 部署
+  * Heroku 部署
   1. heroku create
   2. git push heroku master => error: Failed to install gems via Bundler. 
   
