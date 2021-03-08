@@ -386,7 +386,7 @@ header {
       border: 1px solid $color-grey;
       padding: 10px 15px;
     }
-    input[type="submit"], a {
+    input[type="submit"], a:not(.back) {
       border: none;
       padding: 5px 15px;
       background: $color-green;
