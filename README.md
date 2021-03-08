@@ -12,9 +12,9 @@
 * 系統管理員後台
 
 ### 預設帳號
-帳號：seed@gmail.com
-密碼：test
-管理員後台：網址列結尾輸入 /admin
+* 帳號：seed@gmail.com
+* 密碼：test
+* 管理員後台：網址列結尾輸入 /admin
 
 ### 使用框架與技術
 * 前端：HTML, CSS, JavaScript, Axios
